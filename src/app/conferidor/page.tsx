@@ -206,23 +206,17 @@ export default function ConferidorPage() {
     };
 
     const getHitCountColor = (hitCount: number) => {
-        if (hitCount === 20) return 'bg-gradient-to-r from-yellow-400 to-yellow-500 text-yellow-900';
-        if (hitCount === 0) return 'bg-gradient-to-r from-pink-500 to-pink-600 text-white';
-        if (hitCount === 19) return 'bg-gradient-to-r from-gray-300 to-gray-400 text-gray-900';
-        if (hitCount === 18) return 'bg-gradient-to-r from-orange-400 to-orange-500 text-white';
-        if (hitCount >= 15) return 'bg-gradient-to-r from-green-500 to-green-600 text-white';
+        if (hitCount === 6) return 'bg-gradient-to-r from-yellow-400 to-yellow-500 text-yellow-900'; // Sena
+        if (hitCount === 5) return 'bg-gradient-to-r from-gray-300 to-gray-400 text-gray-900'; // Quina
+        if (hitCount === 4) return 'bg-gradient-to-r from-orange-400 to-orange-500 text-white'; // Quadra
         return 'bg-gray-200 text-gray-700';
     };
 
     const getPrizeLabel = (hitCount: number) => {
         switch (hitCount) {
-            case 20: return '1º Prêmio - 20 acertos!';
-            case 19: return '2º Prêmio - 19 acertos!';
-            case 18: return '3º Prêmio - 18 acertos!';
-            case 17: return '4º Prêmio - 17 acertos!';
-            case 16: return '5º Prêmio - 16 acertos!';
-            case 15: return '6º Prêmio - 15 acertos!';
-            case 0: return '7º Prêmio - 0 acertos!';
+            case 6: return 'Sena - 6 acertos!';
+            case 5: return 'Quina - 5 acertos!';
+            case 4: return 'Quadra - 4 acertos!';
             default: return null;
         }
     };
@@ -477,10 +471,10 @@ export default function ConferidorPage() {
                                             </CardTitle>
                                         </CardHeader>
                                         <CardContent>
-                                            <div className="grid grid-cols-7 gap-2">
+                                            <div className="grid grid-cols-3 gap-2">
                                                 {results.prizes.map((prize) => {
-                                                    // Calcular acertos: Faixa 1-6 = 20-15 acertos, Faixa 7 = 0 acertos
-                                                    const hits = prize.faixa === 7 ? 0 : 21 - prize.faixa;
+                                                    // Mega Sena: Faixa 1 = 6 acertos (Sena), Faixa 2 = 5 acertos (Quina), Faixa 3 = 4 acertos (Quadra)
+                                                    const hits = 7 - prize.faixa; // Faixa 1->6, Faixa 2->5, Faixa 3->4
                                                     const myWins = results.summary.hitDistribution[hits] || 0;
                                                     return (
                                                         <div
@@ -526,7 +520,7 @@ export default function ConferidorPage() {
                                                 <div className={`text-3xl font-bold ${results.summary.prizedCount > 0 ? 'text-green-600' : 'text-gray-900'}`}>
                                                     {results.summary.prizedCount}
                                                 </div>
-                                                <div className="text-sm text-gray-500">Premiados (15+ ou 0)</div>
+                                                <div className="text-sm text-gray-500">Premiados (4, 5 ou 6)</div>
                                             </div>
                                         </CardContent>
                                     </Card>
@@ -568,7 +562,7 @@ export default function ConferidorPage() {
                                                     <Badge
                                                         key={hits}
                                                         variant="outline"
-                                                        className={`px-3 py-1 ${Number(hits) >= 15 || Number(hits) === 0 ? 'border-green-400 bg-green-50 text-green-700' : ''}`}
+                                                        className={`px-3 py-1 ${Number(hits) >= 4 && Number(hits) <= 6 ? 'border-green-400 bg-green-50 text-green-700' : ''}`}
                                                     >
                                                         {hits} acertos: <span className="font-bold ml-1">{count}</span>
                                                     </Badge>
