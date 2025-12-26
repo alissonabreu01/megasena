@@ -1,0 +1,21 @@
+
+Ô£à Total de concursos no banco: 2954
+
+­ƒôè Estat├¡sticas:
+- Concurso mais antigo: 1
+- Concurso mais recente: 2954
+
+­ƒôØ ├Ültimo concurso:
+{
+  "id": 2954,
+  "concurso": 2954,
+  "dataSorteio": "2025-12-20T00:00:00.000Z",
+  "bola01": 1,
+  "bola02": 9,
+  "bola03": 37,
+  "bola04": 39,
+  "bola05": 42,
+  "bola06": 44,
+  "createdAt": "2025-12-22T05:33:02.793Z",
+  "updatedAt": "2025-12-22T05:33:02.793Z"
+}
